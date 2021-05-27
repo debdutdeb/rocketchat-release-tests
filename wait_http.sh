@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Waiting for local rocket.chat server to start"
 attempt_counter=0
 max_attempts=150
 
@@ -13,3 +14,4 @@ until $(curl --connect-timeout 5 --output /dev/null --silent --head --fail $1); 
   attempt_counter=$(($attempt_counter+1))
   sleep 1
 done
+sleep 5
