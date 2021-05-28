@@ -37,7 +37,7 @@ sudo mv "$backup_path" .
 echo "Reinstalling rocketchat"
 sudo snap remove rocketchat-server
 sudo snap install --dangerous "$SNAPFILE"
-sleep 10
+sleep 15
 
 echo "Restoring database"
 sudo systemctl stop snap.rocketchat-server.rocketchat-server
