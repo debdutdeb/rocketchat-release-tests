@@ -26,7 +26,7 @@ sudo snap restart rocketchat-server
 
 echo "Running basic test through caddy"
 #TODO: test https eventually
-. ./basic_test.sh http://127.0.0.1:3000
+. ./basic_test.sh http://127.0.0.1:443
 
 echo "Backing up database"
 sudo systemctl stop snap.rocketchat-server.rocketchat-server
