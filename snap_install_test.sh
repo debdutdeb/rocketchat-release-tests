@@ -15,19 +15,6 @@ sudo snap install --dangerous "$SNAPFILE"
 echo "Running tests on rocketchat"
 . ./basic_test.sh "http://127.0.0.1:3000"
 
-echo "Setting up caddy"
-sudo snap set rocketchat-server caddy-url=https://localhost
-sudo snap set rocketchat-server caddy=enable
-sudo rocketchat-server.initcaddy
-
-sudo snap restart rocketchat-server
-
-./wait_http.sh "http://127.0.0.1:3000"
-
-echo "Running basic test through caddy"
-#TODO: test https eventually
-./basic_test.sh http://localhost:443
-
 echo "Backing up database"
 sudo systemctl stop snap.rocketchat-server.rocketchat-server
 backup_path="$(sudo rocketchat-server.backupdb | egrep -o '/var/snap/rocketchat-server/(.+).tar.gz')"
